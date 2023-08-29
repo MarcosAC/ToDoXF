@@ -6,7 +6,7 @@ namespace ToDoXF.Data.LocalData
 {
     public class DataBase
     {
-        private static SQLiteConnection _connection;
+        public SQLiteConnection _connection;
 
         public DataBase()
         {
