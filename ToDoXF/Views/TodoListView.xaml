@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDoXF.Views.TodoListView"
+             Title="Lista de Tarefas">
+    <ContentPage.Content>
+        <StackLayout>
+            <CollectionView ItemsSource="{Binding TodoList}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="FillAndExpand">
+                            <Label Text="{Binding Title}" />
+                            <ImageButton>
+                                
+                            </ImageButton>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <Label HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           Text="A lista de tarefas esta vazia!"
+                           TextColor="Black"
+                           FontSize="Body" />
+                </CollectionView.EmptyView>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

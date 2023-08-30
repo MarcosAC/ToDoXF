@@ -33,7 +33,7 @@ namespace ToDoXF.ViewModels
                 return;
             }
 
-            //App.Current.MainPage.Navigation.PushAsync(new TodoFormView(selectedTodo));
+            App.Current.MainPage.Navigation.PushAsync(new TodoFormView(selectedTodo));
         }
     }
 }
