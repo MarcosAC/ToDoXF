@@ -11,7 +11,7 @@ namespace ToDoXF
         {
             InitializeComponent();
 
-            MainPage = new FormView();
+            MainPage = new TodoFormView();
         }
 
         protected override void OnStart()

@@ -8,7 +8,7 @@ namespace ToDoXF.ViewModels
 {
     public class TodoListViewModel : BaseViewModel
     {
-        private readonly IRepository<Todo> _repositoryTodo;        
+        private readonly IRepository<Todo> _repositoryTodo;
         private Command _selectTodoCommand;
         public ObservableCollection<Todo> TodoList { get; set; }
 
@@ -33,7 +33,7 @@ namespace ToDoXF.ViewModels
                 return;
             }
 
-            App.Current.MainPage.Navigation.PushAsync(new TodoDetailsView(selectedTodo));
+            //App.Current.MainPage.Navigation.PushAsync(new TodoFormView(selectedTodo));
         }
     }
 }

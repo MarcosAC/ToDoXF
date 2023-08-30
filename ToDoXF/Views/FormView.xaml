@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:ToDoXF.Views"
+             x:DataType="views:TodoFormView"
              x:Class="ToDoXF.Views.FormView">
-    <ContentPage.Content>
-        <StackLayout Padding="10">
-            <Entry Placeholder="Title" />
-            <Editor HeightRequest="180" />
-            <Button Text="Add" />
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+    <StackLayout Padding="10">
+        <Entry Placeholder="Título" />
+        <Editor VerticalOptions="FillAndExpand" />
+        <Button Text="Nova Tarefa"
+                TextColor="White"
+                BackgroundColor="#1976D2" />
+    </StackLayout>
+</ContentView>
