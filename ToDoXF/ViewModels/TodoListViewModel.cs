@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using ToDoXF.Data.Repository;
 using ToDoXF.Models;
+using ToDoXF.Views;
 using Xamarin.Forms;
 
 namespace ToDoXF.ViewModels
@@ -11,9 +12,9 @@ namespace ToDoXF.ViewModels
         private Command _selectTodoCommand;
         public ObservableCollection<Todo> TodoList { get; set; }
 
-        public TodoListViewModel(Repository<Todo> repositoryTodo)
+        public TodoListViewModel()
         {
-            _repositoryTodo = repositoryTodo;
+            _repositoryTodo = new Repository<Todo>();
             TodoList = LoadTodo();
         }
 
@@ -32,7 +33,7 @@ namespace ToDoXF.ViewModels
                 return;
             }
 
-            //Navegar Pagina de detalhes da tarefa.
+            App.Current.MainPage.Navigation.PushAsync(new TodoDetailsView(selectedTodo));
         }
     }
 }

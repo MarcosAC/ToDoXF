@@ -1,4 +1,5 @@
 ﻿using System;
+using ToDoXF.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace ToDoXF
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new FormView();
         }
 
         protected override void OnStart()
