@@ -11,9 +11,9 @@
                         <StackLayout Orientation="Horizontal"
                                      HorizontalOptions="FillAndExpand">
                             <Label Text="{Binding Title}" />
-                            <ImageButton>
-                                
-                            </ImageButton>
+                            <ImageButton Source="imgTrash.png"                                     
+                                         HorizontalOptions="Center"
+                                         VerticalOptions="Center" />
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
