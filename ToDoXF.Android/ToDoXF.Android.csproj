@@ -92,7 +92,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\add_circle_outline.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ToDoXF\ToDoXF.csproj">
       <Project>{CBC18C9B-B72C-4F85-A503-9241824971A6}</Project>

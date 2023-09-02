@@ -11,5 +11,10 @@ namespace ToDoXF.Views
         {
             InitializeComponent();
         }
+
+        public TodoFormView()
+        {
+
+        }
     }
 }

@@ -1,7 +1,5 @@
-﻿using System;
-using ToDoXF.Views;
+﻿using ToDoXF.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace ToDoXF
 {
