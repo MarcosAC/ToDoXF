@@ -7,14 +7,18 @@ namespace ToDoXF.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TodoFormView : ContentPage
     {
-        public TodoFormView(Todo selectedTodo)
-        {
-            InitializeComponent();
-        }
-
         public TodoFormView()
         {
+            NavigationPage.SetHasBackButton(this, false);
+            InitializeComponent();
+            Title = "Nova Tarefa";
+        }
 
+        public TodoFormView(Todo selectedTodo)
+        {
+            NavigationPage.SetHasBackButton(this, false);
+            InitializeComponent();
+            Title = "Editar Tarefa";
         }
     }
 }

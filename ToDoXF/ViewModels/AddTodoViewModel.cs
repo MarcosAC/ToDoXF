@@ -24,7 +24,7 @@ namespace ToDoXF.ViewModels
         public string Description
         {
             get => _description;
-            set => SetProperty(ref _todoTitle, value);
+            set => SetProperty(ref _description, value);
         }
 
         public Command AddTodoCommand =>
