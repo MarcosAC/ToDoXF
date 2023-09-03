@@ -1,14 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:views="clr-namespace:ToDoXF.Views"
-             x:DataType="views:TodoFormView"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
              x:Class="ToDoXF.Views.FormView">
     <StackLayout Padding="10">
-        <Entry Placeholder="Título" />
-        <Editor VerticalOptions="FillAndExpand" />
-        <Button Text="Nova Tarefa"
+        <Entry Placeholder="Título"
+               Text="{Binding TodoTitle}" />
+        <Editor VerticalOptions="FillAndExpand"
+                Text="{Binding Description}" />
+        <!--<Button Text="Nova Tarefa"
                 TextColor="White"
-                BackgroundColor="#1976D2" />
+                BackgroundColor="#1976D2"
+                Command="{Binding AddTodoCommand}" />-->
+
+        <!--xmlns:views="clr-namespace:ToDoXF.Views"
+             x:DataType="views:FormView"-->
     </StackLayout>
 </ContentView>

@@ -1,5 +1,7 @@
-﻿using ToDoXF.Data.Repository;
+﻿using System;
+using ToDoXF.Data.Repository;
 using ToDoXF.Models;
+using ToDoXF.Views;
 using Xamarin.Forms;
 
 namespace ToDoXF.ViewModels
@@ -8,9 +10,9 @@ namespace ToDoXF.ViewModels
     {
         private readonly IRepository<Todo> _repositoryTodo;
         private Command _addTodoCommand;
-        public AddTodoViewModel(Repository<Todo> repositoryTodo)
+        public AddTodoViewModel()
         {
-            _repositoryTodo = repositoryTodo;
+            _repositoryTodo = new Repository<Todo>();
         }
 
         private string _todoTitle;
@@ -32,13 +34,23 @@ namespace ToDoXF.ViewModels
 
         private void ExecuteAddTodoCommand()
         {
-            var todo = new Todo
+            try
             {
-                TodoTitle = TodoTitle,
-                Description = Description,
-            };
+                var todo = new Todo
+                {
+                    TodoTitle = TodoTitle,
+                    Description = Description,
+                };
 
-            _repositoryTodo.Add(todo);
+                _repositoryTodo.Add(todo);
+                Application.Current.MainPage.DisplayAlert("Nova Tarefa", "Nova tarefa criada com sucesso.", "OK");
+            }
+            catch (Exception)
+            {
+                Application.Current.MainPage.DisplayAlert("Nova Tarefa", "Erro ao criar nova tarefa", "Ok");
+            }
+
+            App.Current.MainPage.Navigation.PushAsync(new TodoListView());
         }
     }
 }

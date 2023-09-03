@@ -1,4 +1,5 @@
 ﻿using ToDoXF.Models;
+using ToDoXF.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,15 +10,17 @@ namespace ToDoXF.Views
     {
         public TodoFormView()
         {
-            NavigationPage.SetHasBackButton(this, false);
             InitializeComponent();
+            NavigationPage.SetHasBackButton(this, false);
+            BindingContext = new AddTodoViewModel();
             Title = "Nova Tarefa";
         }
 
         public TodoFormView(Todo selectedTodo)
         {
-            NavigationPage.SetHasBackButton(this, false);
             InitializeComponent();
+            NavigationPage.SetHasBackButton(this, false);
+            BindingContext = new AddTodoViewModel();
             Title = "Editar Tarefa";
         }
     }
