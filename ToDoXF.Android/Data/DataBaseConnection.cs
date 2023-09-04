@@ -1,6 +1,9 @@
 ﻿using System.IO;
 using ToDoXF.Data.LocalData;
+using ToDoXF.Droid.Data;
+using Xamarin.Forms;
 
+[assembly: Dependency(typeof(DataBaseConnection))]
 namespace ToDoXF.Droid.Data
 {
     public class DataBaseConnection : IDataBaseConnection
