@@ -16,9 +16,10 @@
             <CollectionView ItemsSource="{Binding TodoList}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout Orientation="Horizontal"
-                                     HorizontalOptions="FillAndExpand">
-                            <Label Text="{Binding Title}" />
+                        <StackLayout Padding="10"
+                                     Orientation="Horizontal">
+                            <Label Text="{Binding TodoTitle}"
+                                   HorizontalOptions="FillAndExpand"/>
                             <ImageButton Source="imgTrash.png"                                     
                                          HorizontalOptions="Center"
                                          VerticalOptions="Center" />
