@@ -43,11 +43,11 @@ namespace ToDoXF.ViewModels
                 };
 
                 _repositoryTodo.Add(todo);
-                Application.Current.MainPage.DisplayAlert("Nova Tarefa", "Nova tarefa criada com sucesso.", "OK");
+                App.Current.MainPage.DisplayAlert("Nova Tarefa", "Nova tarefa criada com sucesso.", "OK");
             }
             catch (Exception)
             {
-                Application.Current.MainPage.DisplayAlert("Nova Tarefa", "Erro ao criar nova tarefa", "Ok");
+                App.Current.MainPage.DisplayAlert("Nova Tarefa", "Erro ao criar nova tarefa", "Ok");
             }
 
             App.Current.MainPage.Navigation.PushAsync(new TodoListView());

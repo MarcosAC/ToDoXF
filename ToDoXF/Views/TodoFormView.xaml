@@ -4,12 +4,14 @@
              xmlns:views="clr-namespace:ToDoXF.Views"
              x:Class="ToDoXF.Views.TodoFormView">
     <ContentPage.Content>
-        <StackLayout>
-            <views:FormView />
-            <Button Text="Nova Tarefa"
-                TextColor="White"
-                BackgroundColor="#1976D2"
-                Command="{Binding AddTodoCommand}" />
-        </StackLayout>        
+        <Grid RowDefinitions="*,auto"
+              Padding="10">
+            <views:FormView Grid.Row="0" />
+            <Button Grid.Row="1"
+                    Text="Nova Tarefa"
+                    TextColor="White"
+                    BackgroundColor="#1976D2" 
+                    Command="{Binding AddTodoCommand}" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
