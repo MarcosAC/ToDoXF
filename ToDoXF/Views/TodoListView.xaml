@@ -11,18 +11,20 @@
                      Priority="0" 
                      Clicked="OnGoNewTaskClicked"/>
     </ContentPage.ToolbarItems>
-    <ContentPage.Content>        
-        <StackLayout>
+    <ContentPage.Content>
             <CollectionView ItemsSource="{Binding TodoList}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Padding="10"
-                                     Orientation="Horizontal">
+                                     Orientation="Horizontal"
+                                     HeightRequest="30">
                             <Label Text="{Binding TodoTitle}"
-                                   HorizontalOptions="FillAndExpand"/>
-                            <ImageButton Source="imgTrash.png"                                     
-                                         HorizontalOptions="Center"
-                                         VerticalOptions="Center" />
+                                   TextColor="Black"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalTextAlignment="Center" />
+                            <ImageButton Source="imgTrash.png"
+                                         VerticalOptions="Center"
+                                         BackgroundColor="Transparent" />
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -34,6 +36,5 @@
                            FontSize="Body" />
                 </CollectionView.EmptyView>
             </CollectionView>
-        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

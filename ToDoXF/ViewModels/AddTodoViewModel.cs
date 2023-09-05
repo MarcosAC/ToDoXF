@@ -1,7 +1,6 @@
 ﻿using System;
 using ToDoXF.Data.Repository;
 using ToDoXF.Models;
-using ToDoXF.Views;
 using Xamarin.Forms;
 
 namespace ToDoXF.ViewModels
@@ -36,21 +35,22 @@ namespace ToDoXF.ViewModels
         {
             try
             {
-                var todo = new Todo
+                Todo todo = new Todo
                 {
                     TodoTitle = TodoTitle,
                     Description = Description,
                 };
 
                 _repositoryTodo.Add(todo);
-                App.Current.MainPage.DisplayAlert("Nova Tarefa", "Nova tarefa criada com sucesso.", "OK");
+
+               App.Current.MainPage.DisplayAlert("Nova Tarefa", "Nova tarefa criada com sucesso.", "OK");
+
+                App.Current.MainPage.Navigation.PopAsync();
             }
             catch (Exception)
             {
                 App.Current.MainPage.DisplayAlert("Nova Tarefa", "Erro ao criar nova tarefa", "Ok");
             }
-
-            App.Current.MainPage.Navigation.PushAsync(new TodoListView());
         }
     }
 }
