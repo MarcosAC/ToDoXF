@@ -11,12 +11,35 @@ namespace ToDoXF.Views
         public TodoListView()
         {
             InitializeComponent();
+
+            ViewModel = new TodoListViewModel();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             BindingContext = new TodoListViewModel();
+        }
+
+        private TodoListViewModel ViewModel
+        {
+            get => BindingContext as TodoListViewModel;
+            set => BindingContext = value;
         }
 
         private void OnGoNewTaskClicked(object sender, EventArgs e)
         {
             App.Current.MainPage.Navigation.PushAsync(new TodoFormView());
+        }
+
+        private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                ViewModel.SelectTodoCommand.Execute(e.SelectedItem);
+            }
+
+            CollectionViewTodo.SelectedItem = null;
         }
     }
 }

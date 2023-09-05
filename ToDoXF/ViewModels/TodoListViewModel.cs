@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using ToDoXF.Data.Repository;
 using ToDoXF.Models;
 using ToDoXF.Views;
@@ -10,6 +11,7 @@ namespace ToDoXF.ViewModels
     {
         private readonly IRepository<Todo> _repositoryTodo;
         private Command _selectTodoCommand;
+        private Command _deleteTodoCommand;
         public ObservableCollection<Todo> TodoList { get; set; }
 
         public TodoListViewModel()
@@ -34,6 +36,14 @@ namespace ToDoXF.ViewModels
             }
 
             App.Current.MainPage.Navigation.PushAsync(new TodoFormView(selectedTodo));
+        }
+
+        public Command DeleteTodoCommand =>
+            _deleteTodoCommand ?? (_deleteTodoCommand = new Command<Todo>(todo => ExecuteDeleteTodoCommand(todo.Id)));
+
+        private void ExecuteDeleteTodoCommand(int id)
+        {
+            _repositoryTodo.Delete(id);
         }
     }
 }
