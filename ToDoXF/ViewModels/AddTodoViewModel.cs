@@ -9,23 +9,50 @@ namespace ToDoXF.ViewModels
     {
         private readonly IRepository<Todo> _repositoryTodo;
         private Command _addTodoCommand;
+        private readonly Todo _todo;
         public AddTodoViewModel()
         {
             _repositoryTodo = new Repository<Todo>();
         }
 
+        public AddTodoViewModel(Todo selectedTodo)
+        {
+            _todo = selectedTodo;
+        }
+
         private string _todoTitle;
         public string TodoTitle
         {
-            get => _todoTitle;
-            set => SetProperty(ref _todoTitle, value);
+
+            get => _todo != null ? _todo.TodoTitle : _todoTitle;
+
+            set
+            {
+                if (_todo != null)
+                {
+                    _todo.TodoTitle = value;
+                    OnPropertyChanged();
+                }
+
+                SetProperty(ref _todoTitle, value);
+            }
         }
 
         private string _description;
         public string Description
         {
-            get => _description;
-            set => SetProperty(ref _description, value);
+            get => _todo != null ? _todo.Description : _description;
+
+            set
+            {
+                if (_todo != null)
+                {
+                    _todo.Description = value;
+                    OnPropertyChanged();
+                }
+
+                SetProperty(ref _description, value);
+            }
         }
 
         public Command AddTodoCommand =>

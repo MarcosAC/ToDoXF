@@ -20,7 +20,7 @@ namespace ToDoXF.Views
         {
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
-            BindingContext = new AddTodoViewModel();
+            BindingContext = new AddTodoViewModel(selectedTodo);
             Title = "Editar Tarefa";
         }
     }
