@@ -1,26 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"            
              x:Class="ToDoXF.Views.TodoListView"
              Title="Lista de Tarefas">
-
-    <ContentPage.Resources>
-        <Style TargetType="StackLayout">
-            <Setter Property="VisualStateManager.VisualStateGroups">
-                <VisualStateGroupList>
-                    <VisualStateGroup x:Name="Commonstate">
-                        <VisualState x:Name="Normal" />
-                        <VisualState x:Name="Selected">
-                            <VisualState.Setters>
-                                <Setter Property="BackgroundColor"
-                                        Value="LightSkyBlue" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateGroupList>
-            </Setter>
-        </Style>
-    </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>     
         <ToolbarItem Order="Primary"
@@ -31,13 +13,13 @@
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-            <CollectionView x:Name="CollectionViewTodo"
-                            ItemsSource="{Binding TodoList}"
-                            SelectionMode="Single"
-                            SelectedItem="{Binding SelectTodoCommand}"
-                            SelectionChanged="OnItemSelected">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
+        <ListView x:Name="ListViewTodo"
+                  ItemsSource="{Binding TodoList}"
+                  ItemSelected="OnItemSelected"
+                  SelectedItem="{Binding SelectTodoCommand, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
                         <StackLayout Padding="10"
                                      Orientation="Horizontal"
                                      HeightRequest="30">
@@ -49,15 +31,9 @@
                                          VerticalOptions="Center"
                                          BackgroundColor="Transparent" />
                         </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
-                    <Label HorizontalTextAlignment="Center"
-                           VerticalTextAlignment="Center"
-                           Text="A lista de tarefas esta vazia!"
-                           TextColor="Black"
-                           FontSize="Body" />
-                </CollectionView.EmptyView>
-            </CollectionView>
+                    </ViewCell>                    
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

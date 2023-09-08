@@ -39,7 +39,7 @@ namespace ToDoXF.Views
                 ViewModel.SelectTodoCommand.Execute(e.SelectedItem);
             }
 
-            CollectionViewTodo.SelectedItem = null;
+            ListViewTodo.SelectedItem = null;
         }
     }
 }
