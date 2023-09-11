@@ -13,27 +13,36 @@
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        <ListView x:Name="ListViewTodo"
+        <StackLayout Padding="10">
+            <ListView x:Name="ListViewTodo"
                   ItemsSource="{Binding TodoList}"
                   ItemSelected="OnItemSelected"
                   SelectedItem="{Binding SelectTodoCommand, Mode=TwoWay}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Padding="10"
-                                     Orientation="Horizontal"
-                                     HeightRequest="30">
-                            <Label Text="{Binding TodoTitle}"
-                                   TextColor="Black"
-                                   HorizontalOptions="FillAndExpand"
-                                   VerticalTextAlignment="Center" />
-                            <ImageButton Source="imgTrash.png"
-                                         VerticalOptions="Center"
-                                         BackgroundColor="Transparent" />
-                        </StackLayout>
-                    </ViewCell>                    
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal"
+                                         HeightRequest="30">
+                                <Label Text="{Binding TodoTitle}"
+                                       TextColor="Black"
+                                       HorizontalOptions="FillAndExpand"
+                                       VerticalTextAlignment="Center" />
+                                <ImageButton Source="imgTrash.png"
+                                             VerticalOptions="Center"
+                                             BackgroundColor="Transparent" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            <Label x:Name="LblMessageListEmpty"
+                   Text="A lista de tarefas esta vazia!"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   VerticalOptions="CenterAndExpand"
+                   TextColor="Black"
+                   FontSize="Body" />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
