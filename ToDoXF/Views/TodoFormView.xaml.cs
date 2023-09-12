@@ -23,5 +23,10 @@ namespace ToDoXF.Views
             BindingContext = new AddTodoViewModel(selectedTodo);
             Title = "Editar Tarefa";
         }
+
+        private void OnBackTodoListViewClicked(object sender, System.EventArgs e)
+        {
+            App.Current.MainPage.Navigation.PopAsync();
+        }
     }
 }
