@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Threading.Tasks;
 using ToDoXF.Data.Repository;
 using ToDoXF.Models;
 using Xamarin.Forms;
@@ -56,9 +56,9 @@ namespace ToDoXF.ViewModels
         }
 
         public Command AddTodoCommand =>
-            _addTodoCommand ?? (_addTodoCommand = new Command(() => ExecuteAddTodoCommand()));
+            _addTodoCommand ?? (_addTodoCommand = new Command(async () => await ExecuteAddTodoCommand()));
 
-        private void ExecuteAddTodoCommand()
+        private async Task ExecuteAddTodoCommand()
         {
             try
             {
@@ -70,14 +70,15 @@ namespace ToDoXF.ViewModels
 
                 _repositoryTodo.Add(todo);
 
-               App.Current.MainPage.DisplayAlert("Nova Tarefa", "Nova tarefa criada com sucesso.", "OK");
-
-                App.Current.MainPage.Navigation.PopAsync();
+                await App.Current.MainPage.DisplayAlert("Nova Tarefa", "Nova tarefa criada com sucesso.", "OK");                
             }
-            catch (Exception)
+            catch (System.Exception)
             {
-                App.Current.MainPage.DisplayAlert("Nova Tarefa", "Erro ao criar nova tarefa", "Ok");
+                await App.Current.MainPage.DisplayAlert("Nova Tarefa", "Erro ao criar nova tarefa", "Ok");
+                await App.Current.MainPage.Navigation.PopAsync();
             }
+
+            await App.Current.MainPage.Navigation.PopAsync();
         }
     }
 }

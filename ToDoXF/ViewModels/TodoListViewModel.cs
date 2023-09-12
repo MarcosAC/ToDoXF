@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using ToDoXF.Data.Repository;
 using ToDoXF.Models;
 using ToDoXF.Views;
@@ -39,17 +40,31 @@ namespace ToDoXF.ViewModels
         }
 
         public Command DeleteTodoCommand =>
-            _deleteTodoCommand ?? (_deleteTodoCommand = new Command<Todo>(todo => ExecuteDeleteTodoCommand(todo)));
+            _deleteTodoCommand ?? (_deleteTodoCommand = new Command<Todo>(async todo => await ExecuteDeleteTodoCommand(todo)));
 
-        private void ExecuteDeleteTodoCommand(Todo todo)
+        private async Task ExecuteDeleteTodoCommand(Todo todo)
         {
             if (todo == null)
             {
                 return;
             }
 
-            TodoList.Remove(todo);
-            _repositoryTodo.Delete(todo.Id);
+            bool ok = await App.Current.MainPage.DisplayAlert("Excluir Tarefa", "Deseja excluir tarefa", "Sim", "Não");
+
+            if (ok)
+            {
+                try
+                {
+                    TodoList.Remove(todo);
+                    _repositoryTodo.Delete(todo.Id);
+                    
+                    await App.Current.MainPage.DisplayAlert("Excluir Tarefa", "Tarefa excluida com sucesso!", "Ok");
+                }
+                catch (System.Exception)
+                {
+                    await App.Current.MainPage.DisplayAlert("Erro", "Erro ao excluir tarefa!", "Ok");
+                }
+            }
         }
     }
 }
