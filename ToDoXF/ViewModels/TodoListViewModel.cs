@@ -11,6 +11,7 @@ namespace ToDoXF.ViewModels
         private readonly IRepository<Todo> _repositoryTodo;
         private Command _selectTodoCommand;
         private Command _deleteTodoCommand;
+
         public ObservableCollection<Todo> TodoList { get; set; }
 
         public TodoListViewModel()
@@ -38,11 +39,17 @@ namespace ToDoXF.ViewModels
         }
 
         public Command DeleteTodoCommand =>
-            _deleteTodoCommand ?? (_deleteTodoCommand = new Command<Todo>(todo => ExecuteDeleteTodoCommand(todo.Id)));
+            _deleteTodoCommand ?? (_deleteTodoCommand = new Command<Todo>(todo => ExecuteDeleteTodoCommand(todo)));
 
-        private void ExecuteDeleteTodoCommand(int id)
+        private void ExecuteDeleteTodoCommand(Todo todo)
         {
-            _repositoryTodo.Delete(id);
+            if (todo == null)
+            {
+                return;
+            }
+
+            TodoList.Remove(todo);
+            _repositoryTodo.Delete(todo.Id);
         }
     }
 }

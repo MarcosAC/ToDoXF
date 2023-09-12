@@ -18,8 +18,6 @@ namespace ToDoXF.Views
         {
             base.OnAppearing();
             BindingContext = new TodoListViewModel();
-            ListViewTodo.IsVisible = ViewModel.TodoList.Count > 0 ? true : false;
-            LblMessageListEmpty.IsVisible = ViewModel.TodoList.Count == 0 ? true : false;
         }
 
         private TodoListViewModel ViewModel

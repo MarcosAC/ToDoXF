@@ -15,9 +15,9 @@
     <ContentPage.Content>
         <StackLayout Padding="10">
             <ListView x:Name="ListViewTodo"
-                  ItemsSource="{Binding TodoList}"
-                  ItemSelected="OnItemSelected"
-                  SelectedItem="{Binding SelectTodoCommand, Mode=TwoWay}">
+                      ItemsSource="{Binding TodoList}"
+                      ItemSelected="OnItemSelected"
+                      SelectedItem="{Binding SelectTodoCommand, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -29,20 +29,15 @@
                                        VerticalTextAlignment="Center" />
                                 <ImageButton Source="imgTrash.png"
                                              VerticalOptions="Center"
-                                             BackgroundColor="Transparent" />
+                                             BackgroundColor="Transparent"
+                                             Command="{Binding Source={x:Reference Name=ListViewTodo},
+                                                       Path=BindingContext.DeleteTodoCommand}"
+                                             CommandParameter="{Binding .}" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            
-            <Label x:Name="LblMessageListEmpty"
-                   Text="A lista de tarefas esta vazia!"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   VerticalOptions="CenterAndExpand"
-                   TextColor="Black"
-                   FontSize="Body" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
